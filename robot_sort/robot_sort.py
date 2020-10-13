@@ -98,97 +98,129 @@ class SortingRobot:
         """
         # Fill this out
 
-        self.set_light_on()
-
-        while self.light_is_on():
-
-            self.set_light_off()
-
-            while self.can_move_right():
-
-                self.swap_item()
-                # print('item', self._item)
-                # print('item position', self._position)
-                self.move_right()
-                # print('item again', self._item)
-                # print('item position now', self._position, '\n')
-
-
-
-                if self.compare_item() == 1:
-
-                    self.swap_item()
-                    # print('ITEM', self._item)
-                    # print('ITEM position', self._position)
-                    self.move_left()
-                    self.swap_item()
-                    # print('NEW item', self._item)
-                    # print('NEW item position', self._position)
-                    self.move_right()
-                    self.set_light_on()
-
-                else:
-                    self.move_left()
-                    self.swap_item()
-                    # print('FINAL item', self._item)
-                    # print('FINAL item position', self._position)
-                    self.move_right()
-
-            while self.can_move_left():
-                self.move_left()
-
-
-        # ATTEMPT AT SELECTION SORT...DID NOT WORK, I made a mess :(
-
-        # print('initial item', self._item)
-        # self.swap_item()
-        # # print('post swap', self._item)
-        # # print('pos', self._position)
         # self.set_light_on()
 
         # while self.light_is_on():
 
-        #     if self.can_move_right():
-        #         self.move_right()
-        #         if self.compare_item() > 0:
-        #             self.move_right()
-        #             print('new pos', self._position)
-        #         else:
-        #             self.swap_item()
-        #             print('new item', self._item)
-        #             print('list', self._list)
-        #     elif self.can_move_right is False:
-        #         self.swap_item()
-        #         self.move_left()
-        #         print('current pos', self._position)
-        #         print('current item', self._item)
-        #         self.set_light_off()
-                # print('new pos', self._position)
-                # if self.compare_item() > 0:
-                #     print('comp item', )
-
+        #     self.set_light_off()
 
         #     while self.can_move_right():
-        #         # self.swap_item()
-        #         print('item before', self._item)
+
+        #         self.swap_item()
+        #         # print('item', self._item)
+        #         # print('item position', self._position)
+        #         self.move_right()
+        #         # print('item again', self._item)
+        #         # print('item position now', self._position, '\n')
+
+
 
         #         if self.compare_item() == 1:
+
+        #             self.swap_item()
+        #             # print('ITEM', self._item)
+        #             # print('ITEM position', self._position)
+        #             self.move_left()
+        #             self.swap_item()
+        #             # print('NEW item', self._item)
+        #             # print('NEW item position', self._position)
         #             self.move_right()
-        #             self.swap_item()
-        #             # self.swap_item()
-        #             print('item after', self._item)
-                
-        #         if self.compare_item() is None and self.can_move_right is False:
-        #             self.swap_item()
-        #             self.set_light_off()
-        #             break
+        #             self.set_light_on()
+
         #         else:
-        #             while self.can_move_left():
-        #                 if self.compare_item() is None:
-        #                     self.swap_item()
-        #                     self.move_right()
-        #                     self.swap_item()
-                # break
+        #             self.move_left()
+        #             self.swap_item()
+        #             # print('FINAL item', self._item)
+        #             # print('FINAL item position', self._position)
+        #             self.move_right()
+
+        #     while self.can_move_left():
+        #         self.move_left()
+
+
+        # ATTEMPT AT SELECTION SORT...DID NOT WORK, I made a mess :(
+
+        print('initial item', self._item)
+        self.swap_item()
+        # print('post swap', self._item)
+        # print('pos', self._position)
+        self.set_light_on()
+
+        while self.light_is_on():
+
+        #     while self.can_move_right():
+        #         self.move_right()
+        #         if self.compare_item() > 0:
+        #             self.swap_item()
+        #             self.move_right()
+        #             print('new pos', self._position)
+        #             self.swap_item()
+        #         # else:
+        #             print('new item', self._item)
+        #             print('list', self._list)
+            # elif self.can_move_right is False:
+            #     self.swap_item()
+            #     self.move_left()
+            #     print('current pos', self._position)
+            #     print('current item', self._item)
+            #     self.set_light_off()
+            #     print('new pos', self._position)
+            #     if self.compare_item() > 0:
+            #         print('comp item', )
+
+
+            while self.move_right():
+                # self.swap_item()
+                print('item before', self._item)
+
+                if self.compare_item() > 0:
+                    # self.move_right()
+                    self.swap_item()
+                    # self.swap_item()
+                    print('item after', self._item)
+                
+            if self.compare_item() is None and self.can_move_right() is False:
+                self.swap_item()
+                self.set_light_off()
+                break
+            else:
+                while self.move_left():
+                    if self.compare_item() is None:
+                        self.swap_item()
+                        self.move_right()
+                        self.swap_item()
+                        break
+
+
+    # SELECTIN SORT SOLUTION
+        #     def sort(self):
+        # """
+        # Sort the robot's list.
+        # """
+        # # Selection Sort solution
+        # self.swap_item()
+        # self.set_light_on()
+        # while self.light_is_on():
+        #     # move right and find the smallest item that has not been sorted
+        #     while self.move_right():
+        #         if self.compare_item() > 0:
+        #             self.swap_item()
+        #     # if the robot is at the end of the list and all items are sorted, we're done
+        #     if self.compare_item() is None and self.can_move_right() is False:
+        #         # place the current item down in the list and turn light off to indicate the list is sorted
+        #         self.swap_item()
+        #         self.set_light_off()
+        #         break
+        #     else:
+        #         # find the spot in the list that is holding None
+        #         # place the item in that position
+        #         # move right and swap
+        #         while self.move_left():
+        #             if self.compare_item() is None:
+        #                 self.swap_item()
+        #                 self.move_right()
+        #                 self.swap_item()
+        #                 break
 
 
 if __name__ == "__main__":
